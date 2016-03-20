@@ -2,6 +2,18 @@ Where Am I with Bash Script
 
 query source: [http://ip-api.com/json/](http://ip-api.com/json/)
 
+Installation: `bash installw.sh` or
+
+```
+sudo chmod u+x whereami
+
+sudo chmod 777 whereami
+
+sudo cp whereami /usr/bin/whereami
+```
+
+Usage Info
+
 ```
 whereami -h
 
