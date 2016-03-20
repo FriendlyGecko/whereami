@@ -1,0 +1,62 @@
+#!/bin/bash
+
+country=$(curl -s 'http://ip-api.com/json/' | grep -Po '"country":.*?[^\\]"' | awk -F: '{print $2}' | sed "s/\"//g")
+city=$(curl -s 'http://ip-api.com/json/' | grep -Po '"city":.*?[^\\]"' | awk -F: '{print $2}' | sed "s/\"//g")
+isp=$(curl -s 'http://ip-api.com/json/' | grep -Po '"isp":.*?[^\\]"' | awk -F: '{print $2}' | sed "s/\"//g")
+ipad=$(curl -s 'http://ip-api.com/json/' | grep -Po '"query":.*?[^\\]"' | awk -F: '{print $2}' | sed "s/\"//g")
+lat=$(curl -s 'http://ip-api.com/json/' | grep -Po '"lat":.*?[^\\]"' | awk -F: '{print $2}' | sed "s/\"//g" | sed "s/\,//g")
+lon=$(curl -s 'http://ip-api.com/json/' | grep -Po '"lon":.*?[^\\]"' | awk -F: '{print $2}' | sed "s/\"//g" | sed "s/\,//g")
+
+
+help()
+{
+	echo
+	echo "Usage: run whereami standalone"
+	echo
+	echo "or run whereami with parameter"
+	echo
+	echo "parameters: city, country, ip, isp, latitude, longitude"
+	echo
+	echo "Usage: whereami [city, --city] [country, --country] 
+	[ip, --ip] [isp, --isp] [latitude, --lat] 
+	[longitude, --lon] [help, -help, --help, --h, -h]"
+	echo
+	echo "city: get your city"
+	echo "country: get your country"
+	echo "ip: get your ip adress"
+	echo "isp: get your ISP"
+	echo "latitude: get latitude"
+	echo "longitude: get longitude"
+	echo
+	echo "query source: http://ip-api.com/json/"
+	echo
+}
+
+whereami() 
+{
+	echo "IP Address:" $ipad
+	echo "Country:" $country
+	echo "City:" $city
+	echo "ISP:" $isp
+	echo "Latitude:" $lat
+	echo "Longitude:" $lon
+}
+
+
+if [ "$#" -eq 0 ]; then
+	whereami
+elif [ $1 = "city" ] || [ $1 = "--city" ]; then
+	echo $city
+elif [ $1 == "country" ] || [ $1 == "--country" ]; then
+	echo $country
+elif [ $1 == "ip" ] || [ $1 == "--ip" ]; then
+	echo $ipad
+elif [ $1 == "isp" ] || [ $1 == "--isp" ]; then
+	echo $isp
+elif [ $1 == "latitude" ] || [ $1 == "--lat" ]; then
+	echo $lat
+elif [ $1 == "longitude" ] || [ $1 == "--lon" ]; then
+	echo $lon
+elif [ $1 == "help" ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ] || [ $1 == "--h" ]; then
+	help
+fi
