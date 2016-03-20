@@ -11,7 +11,7 @@ lon=$(curl -s 'http://ip-api.com/json/' | grep -Po '"lon":.*?[^\\]"' | awk -F: '
 help()
 {
 	echo
-	echo "Usage: run whereami standalone"
+	echo "Usage: run whereami without parameter"
 	echo
 	echo "or run whereami with parameter"
 	echo
