@@ -19,7 +19,7 @@ Usage Info
 ```
 whereami -h
 
-Usage: run whereami standalone
+Usage: run whereami without parameter
 
 or run whereami with parameter
 
