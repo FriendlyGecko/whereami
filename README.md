@@ -1,4 +1,6 @@
-Where Am I with Bash Script
+Where Am I
+
+Get your location info in CLI
 
 query source: [http://ip-api.com/json/](http://ip-api.com/json/)
 
