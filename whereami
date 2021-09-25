@@ -59,4 +59,6 @@ elif [ $1 == "longitude" ] || [ $1 == "--lon" ]; then
 	echo $lon
 elif [ $1 == "help" ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ] || [ $1 == "--h" ]; then
 	help
+else
+	echo "Invalid input. For help use: [ whereami --help ]"
 fi
